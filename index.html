@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+  </head>
+  <body>
+    <button onclick="digitar(1)">1</button>
+    <button onclick="digitar(2)">2</button>
+    <button onclick="digitar(3)">3</button>
+    <button onclick="digitar(4)">4</button>
+    <button onclick="digitar(5)">5</button>
+    <button onclick="digitar(6)">6</button>
+    <button onclick="digitar(7)">7</button>
+    <button onclick="digitar(8)">8</button>
+    <button onclick="digitar(9)">9</button>
+    <button onclick="digitar(0)">0</button>
+    <button onclick="somar()">+</button>
+    <button onclick="multi()">x</button>
+    <button onclick="dividir()">/</button>
+    <button onclick="subtrair()">-</button>
+    <button onclick="result()">=</button>
+    <h1 id="res">Resultado é:</h1>
+    <script>
+      var valores = [];
+      var tipodeoperacao = "";
+      var resultado = 0;
+
+      function digitar(digito) {
+        valores.push(digito);
+      }
+
+      function somar() {
+        tipodeoperacao = "somar";
+      }
+      function multi() {
+        tipodeoperacao = "multiplicar";
+      }
+      function dividir() {
+        tipodeoperacao = "dividir";
+      }
+      function subtrair() {
+        tipodeoperacao = "subtrair";
+      }
+      function result() {
+        var ultimaposicao = valores.length - 1;
+        var penultimaposicao = ultimaposicao - 1;
+
+        if (tipodeoperacao === "somar") {
+          resultado = valores[penultimaposicao] + valores[ultimaposicao];
+        }
+        if (tipodeoperacao === "multiplicar") {
+          resultado = valores[penultimaposicao] * valores[ultimaposicao];
+        }
+        if (tipodeoperacao === "dividir") {
+          resultado = valores[penultimaposicao] / valores[ultimaposicao];
+        }
+        if (tipodeoperacao === "subtrair") {
+          resultado = valores[penultimaposicao] - valores[ultimaposicao];
+        }
+
+        const element = document.getElementById("res");
+        element.innerText = resultado;
+      }
+    </script>
+  </body>
+</html>
